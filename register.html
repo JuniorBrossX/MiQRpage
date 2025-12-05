@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiQR - Registrarse</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="login-body">
+
+  <div class="login-overlay"></div>
+
+  <div class="login-wrapper">
+
+    <a href="index.html" class="login-back">← Volver</a>
+
+    <section class="register-card">
+
+      <img src="https://makemiqr.wordpress.com/wp-content/uploads/2025/11/logo-mi-qr-03-1.png?w=924"
+           alt="MiQR" class="login-logo" />
+
+      <h1 class="login-title">Registrarse</h1>
+
+      <form id="registerForm" class="login-form" novalidate>
+
+        <!-- Nombre -->
+        <label class="login-label">
+          Nombre
+          <input type="text" id="regName" name="name"
+                 class="login-input" placeholder="Tu nombre completo" required />
+        </label>
+
+        <!-- Correo -->
+        <label class="login-label">
+          Correo electrónico
+          <input type="email" id="regEmail" name="email"
+                 class="login-input" placeholder="tucorreo@ejemplo.com" required />
+        </label>
+
+        <!-- Teléfono -->
+        <label class="login-label">
+          Teléfono
+          <div class="phone-row">
+            <span class="phone-prefix">🇨🇴 +57</span>
+            <input type="tel" id="regPhone" name="phone"
+                   class="login-input phone-input" placeholder="3001234567" required />
+          </div>
+        </label>
+
+        <!-- Términos -->
+        <label class="terms-label">
+          <input type="checkbox" id="regTerms" />
+          <span>Acepto los términos y condiciones de tratamiento de datos personales.</span>
+        </label>
+
+        <p id="registerError" class="login-error" aria-live="polite"></p>
+
+        <button type="submit" class="login-btn-primary">
+          Registrarme
+        </button>
+      </form>
+
+    </section>
+
+  </div>
+
+  <script>
+    const regForm   = document.getElementById('registerForm');
+    const regName   = document.getElementById('regName');
+    const regEmail  = document.getElementById('regEmail');
+    const regPhone  = document.getElementById('regPhone');
+    const regTerms  = document.getElementById('regTerms');
+    const regError  = document.getElementById('registerError');
+
+    regForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name  = regName.value.trim();
+      const email = regEmail.value.trim();
+      const phone = regPhone.value.trim();
+
+      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+      if (!name || !email || !phone) {
+        regError.textContent = 'Completa todos los campos.';
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        regError.textContent = 'Ingresa un correo válido.';
+        return;
+      }
+
+      if (!/^[0-9]{7,10}$/.test(phone)) {
+        regError.textContent = 'Ingresa un teléfono válido (solo números).';
+        return;
+      }
+
+      if (!regTerms.checked) {
+        regError.textContent = 'Debes aceptar los términos y condiciones.';
+        return;
+      }
+
+      regError.textContent = '';
+      alert('Registro enviado (simulado).');
+      // Aquí podrías hacer un fetch/POST real.
+    });
+  </script>
+
+</body>
+</html>
