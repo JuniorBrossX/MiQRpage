@@ -1,0 +1,233 @@
+/* ===================================
+   GENERALES
+=================================== */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+    color: #313030;
+}
+
+.container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===================================
+   HEADER
+=================================== */
+.header {
+    background: #f5f5f5;
+    border-bottom: 1px solid #c8c8c8;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 85px;
+}
+
+.search {
+    max-width: 320px;
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #313030;
+    border-radius: 6px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* ===================================
+   BOTONES
+=================================== */
+
+.btn {
+    border: 2px solid #313030;
+    background: transparent;
+    padding: 8px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #313030;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #313030;
+    color: #fff;
+}
+
+.btn-primary {
+    background: #D2232A;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.btn-primary:hover {
+    background: #b51d26;
+}
+
+/* ===================================
+   HERO
+=================================== */
+
+.hero {
+    padding: 60px 0;
+    position: relative;
+}
+
+.tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 100px;
+    background: #f8e7e8;
+    color: #d2232a;
+    font-size: 12px;
+}
+
+.hero-title {
+    font-size: 34px;
+    margin: 20px 0 10px;
+}
+
+.hero-text {
+    max-width: 520px;
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+/* Imagen flotada (A1 EXACTO) */
+.hero-img {
+    width: 360px;
+    border-radius: 40px;
+    float: right;
+    margin-top: -120px;
+}
+
+/* ===================================
+   FEATURES
+=================================== */
+.features-title {
+    text-align: center;
+    font-size: 30px;
+}
+
+.features-subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    flex: 1;
+    background: #fef3f3;
+    border: 1px solid #fee2e2;
+    border-radius: 40px;
+    text-align: center;
+    padding: 40px 30px;
+}
+
+.icon {
+    width: 75px;
+    height: 75px;
+}
+
+/* ===================================
+   CTA
+=================================== */
+.cta {
+    background: #D2232A;
+    padding: 70px 0;
+    text-align: center;
+    color: #fff;
+    margin-top: 0px;
+}
+
+.cta-title {
+    font-size: 30px;
+}
+
+.cta-subtitle {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+@media (max-width: 900px) {
+    .hero-img {
+        float: none;
+        display: block;
+        margin: 20px auto;
+        width: 80%;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+/* ============================
+   FOOTER
+=============================== */
+
+.footer {
+    background: #313030;
+    padding: 50px 0;
+    text-align: center;
+    color: #e5e5e5;
+    margin-top: 0px;
+}
+
+.footer-logo {
+    width: 90px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.footer-text {
+    color: #e5e5e5;
+    font-size: 14px;
+    margin-top: 10px;
+}
