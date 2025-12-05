@@ -400,3 +400,318 @@ body {
     cursor: pointer;
     width: 100%;
 }
+
+
+
+
+/* ============================
+   TIENDA / PRODUCTOS
+=============================== */
+
+.shop-header {
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.shop-header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Volver */
+.shop-back {
+  font-size: 14px;
+  color: #555;
+  text-decoration: none;
+}
+
+.shop-back:hover {
+  color: #d2232a;
+}
+
+/* Logo + título */
+.shop-logo-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.shop-logo {
+  width: 60px;
+  height: auto;
+}
+
+.shop-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Botón carrito */
+.shop-cart-btn {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  background: #d2232a;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* Contenedor principal */
+.shop-main {
+  background: #fafafa;
+  padding: 40px 0 60px;
+}
+
+.shop-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+/* Tarjeta de producto */
+.product-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image-wrapper {
+  width: 100%;
+  padding-top: 70%;           /* ratio aproximado 7:5 */
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image-wrapper img.product-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Puntos indicadores */
+.product-dots {
+  display: flex;
+  gap: 6px;
+  padding: 16px 22px 8px;
+}
+
+.product-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #bdbdbd;
+}
+
+/* Nombre y descripción */
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0 22px;
+  margin-bottom: 8px;
+}
+
+.product-desc {
+  font-size: 14px;
+  color: #777;
+  padding: 0 22px 22px;
+  line-height: 1.6;
+}
+
+/* Responsive tienda */
+@media (max-width: 1000px) {
+  .shop-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .shop-header-inner {
+    padding: 14px 16px;
+  }
+
+  .shop-container {
+    grid-template-columns: 1fr;
+    padding: 0 16px 32px;
+  }
+}
+´
+
+
+/* ============================
+   LOGIN / INICIAR SESIÓN
+=============================== */
+
+/* Body con la imagen de fondo */
+.login-body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #111;
+  position: relative;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* Oscurecer el fondo */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: url("./assets/login_background.png");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Envoltorio centrado */
+.login-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* Botón Volver arriba a la izquierda */
+.login-back {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  z-index: 2;
+}
+
+/* Tarjeta blanca */
+.login-card {
+  width: 100%;
+  max-width: 540px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px 40px 36px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Logo */
+.login-logo {
+  width: 70px;
+  margin-bottom: 12px;
+}
+
+/* Título */
+.login-title {
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+
+/* Formulario */
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-optional {
+  color: #b5b5b5;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.login-input {
+  margin-top: 8px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #d3d3d3;
+  font-size: 14px;
+  outline: none;
+}
+
+.login-input:focus {
+  border-color: #d2232a;
+  box-shadow: 0 0 0 1px rgba(210, 35, 42, 0.15);
+}
+
+/* Mensaje de error */
+.login-error {
+  min-height: 18px;
+  font-size: 13px;
+  color: #d2232a;
+  margin-top: 4px;
+}
+
+/* Botones */
+.login-btn-primary,
+.login-btn-secondary {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  font-weight: 500;
+}
+
+/* Botón rojo Iniciar sesión */
+.login-btn-primary {
+  background: #d2232a;
+  color: #ffffff;
+}
+
+.login-btn-primary:hover {
+  background: #b51d26;
+}
+
+/* Botón negro Registrarse */
+.login-btn-secondary {
+  background: #1f1f1f;
+  color: #ffffff;
+}
+
+.login-btn-secondary:hover {
+  background: #151515;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .login-card {
+    padding: 24px 20px 28px;
+    border-radius: 18px;
+  }
+
+  .login-title {
+    font-size: 22px;
+  }
+
+  .login-back {
+    top: 16px;
+    left: 16px;
+    font-size: 14px;
+  }
+}
