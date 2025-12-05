@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiQR - Iniciar sesión</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="login-body">
+
+  <!-- Fondo oscuro encima de la imagen -->
+  <div class="login-overlay"></div>
+
+  <!-- Contenido -->
+  <div class="login-wrapper">
+
+    <a href="index.html" class="login-back">← Volver</a>
+
+    <section class="login-card">
+
+      <img src="./assets/logo.png"
+           alt="MiQR" class="login-logo" />
+
+      <h1 class="login-title">Iniciar sesión</h1>
+
+      <form id="loginForm" class="login-form" novalidate>
+        <label class="login-label">
+          Email <span class="login-optional">(obligatorio)</span>
+          <input type="email" id="email" name="email" class="login-input"
+                 placeholder="tucorreo@ejemplo.com" required />
+        </label>
+
+        <label class="login-label">
+          Contraseña <span class="login-optional">(obligatorio)</span>
+          <input type="password" id="password" name="password" class="login-input"
+                 placeholder="••••••••" required />
+        </label>
+
+        <p id="loginError" class="login-error" aria-live="polite"></p>
+
+        <button type="submit" class="login-btn-primary">
+          Iniciar sesión
+        </button>
+
+        <button type="button" class="login-btn-secondary">
+          Registrarse
+        </button>
+      </form>
+
+    </section>
+
+  </div>
+
+  <script>
+    // Validación básica de email al enviar
+    const form = document.getElementById('loginForm');
+    const emailInput = document.getElementById('email');
+    const errorBox = document.getElementById('loginError');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const email = emailInput.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!email) {
+        errorBox.textContent = 'Por favor, ingresa tu correo.';
+        emailInput.focus();
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        errorBox.textContent = 'Ingresa un correo válido (ejemplo@dominio.com).';
+        emailInput.focus();
+        return;
+      }
+
+      errorBox.textContent = '';
+      // Aquí podrías hacer el fetch o redirección real:
+      alert('Inicio de sesión válido (simulado).');
+    });
+  </script>
+
+</body>
+</html>
