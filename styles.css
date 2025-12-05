@@ -9,7 +9,6 @@ body {
 }
 
 .container {
-    width: 100%;
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 20px;
@@ -19,9 +18,8 @@ body {
    HEADER
 =================================== */
 .header {
-    background: #f5f5f5;
-    border-bottom: 1px solid #c8c8c8;
-    padding: 15px 0;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -31,54 +29,65 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 88px;
 }
 
+/* Logo */
 .logo {
-    width: 85px;
+    width: 80px;
 }
 
+/* Buscador grande centrado */
 .search {
-    max-width: 320px;
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #313030;
-    border-radius: 6px;
+    flex: 1;
+    max-width: 420px;
+    margin: 0 32px;
+    padding: 16px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
 }
 
+.search::placeholder {
+    color: #a0a0a0;
+}
+
+/* Nav derecha */
 .nav-buttons {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 24px;
+    font-size: 15px;
 }
 
 /* ===================================
    BOTONES
 =================================== */
-
 .btn {
-    border: 2px solid #313030;
+    border: none;
     background: transparent;
-    padding: 8px 20px;
-    border-radius: 6px;
+    padding: 0;
     cursor: pointer;
     color: #313030;
     font-size: 15px;
-    transition: 0.3s;
+    text-decoration: none;
 }
 
 .btn:hover {
-    background: #313030;
-    color: #fff;
+    color: #d2232a;
 }
 
 .btn-primary {
-    background: #D2232A;
+    background: #d2232a;
     color: #fff;
     border: none;
-    padding: 8px 20px;
-    border-radius: 12px;
+    padding: 12px 26px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 500;
     font-size: 15px;
+    text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -90,41 +99,69 @@ body {
 =================================== */
 
 .hero {
-    padding: 60px 0;
-    position: relative;
+    padding: 80px 0 100px;
+    display: flex;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); /* texto más ancho que la imagen */
+    align-items: center;
+    column-gap: 80px;
 }
 
+/* Columna izquierda (contenedor para centrar el bloque) */
+.hero > *:not(.hero-img) {
+    grid-column: 1 / 2;
+}
+
+/* Tag rosado */
 .tag {
     display: inline-block;
-    padding: 6px 14px;
-    border-radius: 100px;
-    background: #f8e7e8;
+    padding: 10px 26px;
+    border-radius: 999px;
+    background: #ffe6e6;
     color: #d2232a;
     font-size: 12px;
+    margin-bottom: 28px;
 }
 
+/* Bloque de título + texto ajustado a un ancho fijo centrado visualmente */
 .hero-title {
-    font-size: 34px;
-    margin: 20px 0 10px;
+    font-size: 36px;
+    margin: 0 0 18px;
+    max-width: 520px;
 }
 
 .hero-text {
-    max-width: 520px;
-    line-height: 1.6;
+    max-width: 620px;
+    line-height: 1.7;
+    color: #666666;
+    font-size: 15px;
 }
 
+/* Botones del hero */
 .hero-buttons {
     display: flex;
-    gap: 15px;
-    margin-top: 25px;
+    gap: 18px;
+    margin-top: 30px;
 }
 
-/* Imagen flotada (A1 EXACTO) */
+.hero .btn-primary {
+    padding: 16px 34px;
+    border-radius: 12px;
+}
+
+.hero .btn {
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: 1px solid #dedede;
+    background: #ffffff;
+}
+
+/* Columna derecha (imagen) */
 .hero-img {
-    width: 360px;
-    border-radius: 40px;
-    float: right;
-    margin-top: -120px;
+    grid-column: 2 / 3;
+    justify-self: end;        /* pega la tarjeta al lado derecho */
+    width: 327px;
+    max-width: 100%;
+    border-radius: 32px;
 }
 
 /* ===================================
@@ -163,11 +200,11 @@ body {
    CTA
 =================================== */
 .cta {
-    background: #D2232A;
+    background: #d2232a;
     padding: 70px 0;
     text-align: center;
     color: #fff;
-    margin-top: 0px;
+    margin-top: 2rem;
 }
 
 .cta-title {
@@ -180,20 +217,48 @@ body {
 }
 
 /* ===================================
-   RESPONSIVE
+   RESPONSIVE HERO
 =================================== */
 @media (max-width: 900px) {
-    .hero-img {
-        float: none;
-        display: block;
-        margin: 20px auto;
-        width: 80%;
+    /* Hero en una sola columna */
+    .hero {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+        text-align: center;
+        padding: 48px 0 56px;
+        display: inline-grid;
     }
 
+    /* Todo el contenido de texto ocupa la primera “fila” */
+    .hero > *:not(.hero-img) {
+        grid-column: 1 / -1;
+        margin-left: 0;                 /* quitar desplazamiento lateral */
+    }
+
+    .hero-title,
     .hero-text {
         max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 12px;
+        margin-top: 24px;
+    }
+
+    /* Imagen debajo, centrada y algo más pequeña */
+    .hero-img {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 88%;
+        max-width: 430px;
+    }
+
+    /* Opcional: cards una debajo de otra */
     .cards {
         flex-direction: column;
     }
@@ -201,23 +266,18 @@ body {
     .card {
         margin-bottom: 20px;
     }
-
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
 }
+
 
 /* ============================
    FOOTER
 =============================== */
-
 .footer {
     background: #313030;
     padding: 50px 0;
     text-align: center;
     color: #e5e5e5;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .footer-logo {
@@ -234,9 +294,12 @@ body {
 
 /* =====================================
    ESTILOS EXCLUSIVOS DE REGISTRO
-   ===================================== */
+===================================== */
 
-/* Fondo estilo cover */
+/* OJO: si usas .cover + .container en la página de registro,
+   mejor crea otra clase en vez de reutilizar .container global.
+   De momento lo dejo igual que lo tenías. */
+
 .cover {
     position: relative;
     width: 100%;
@@ -246,7 +309,6 @@ body {
     background-position: center;
 }
 
-/* Oscurecimiento */
 .overlay {
     position: absolute;
     top: 0;
@@ -257,8 +319,7 @@ body {
     opacity: 0.7;
 }
 
-/* Contenedor general */
-.container {
+.cover .container {
     position: relative;
     z-index: 2;
     height: 100%;
@@ -268,7 +329,6 @@ body {
     padding: 20px;
 }
 
-/* Botón volver */
 .volver a {
     color: white;
     font-size: 18px;
@@ -276,7 +336,6 @@ body {
     font-weight: bold;
 }
 
-/* Caja blanca */
 .login-box {
     background: #f5f5f5;
     padding: 25px;
@@ -287,21 +346,18 @@ body {
     width: 100%;
 }
 
-/* Logo */
 .login-box .logo {
     width: 70px;
     height: auto;
     margin-bottom: 10px;
 }
 
-/* Título */
 .login-box h2 {
     color: #313030;
     margin: 10px 0 20px;
     font-size: 24px;
 }
 
-/* Formulario */
 .login-box form {
     width: 100%;
     display: flex;
@@ -323,7 +379,6 @@ body {
     font-size: 15px;
 }
 
-/* Check legal */
 .check {
     font-size: 14px;
     color: #313030;
@@ -334,7 +389,6 @@ body {
     margin-right: 6px;
 }
 
-/* Botón Registrarme */
 .btn-login {
     margin-top: 20px;
     background: #d2232a;
