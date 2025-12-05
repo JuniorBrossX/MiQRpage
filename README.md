@@ -1,0 +1,2 @@
+# MiQRpage
+Pagina de QR.
