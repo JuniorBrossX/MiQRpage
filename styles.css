@@ -584,6 +584,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 24px;
+  background-color: rgb(0, 0, 0, 0.7);
 }
 
 /* Botón Volver arriba a la izquierda */
