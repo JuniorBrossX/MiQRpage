@@ -9,7 +9,6 @@ body {
 }
 
 .container {
-    width: 100%;
     max-width: 1180px;
     margin: 0 auto;
     padding: 0 20px;
@@ -19,9 +18,8 @@ body {
    HEADER
 =================================== */
 .header {
-    background: #f5f5f5;
-    border-bottom: 1px solid #c8c8c8;
-    padding: 15px 0;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -31,54 +29,65 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 88px;
 }
 
+/* Logo */
 .logo {
-    width: 85px;
+    width: 80px;
 }
 
+/* Buscador grande centrado */
 .search {
-    max-width: 320px;
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #313030;
-    border-radius: 6px;
+    flex: 1;
+    max-width: 420px;
+    margin: 0 32px;
+    padding: 16px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
 }
 
+.search::placeholder {
+    color: #a0a0a0;
+}
+
+/* Nav derecha */
 .nav-buttons {
     display: flex;
-    gap: 15px;
+    align-items: center;
+    gap: 24px;
+    font-size: 15px;
 }
 
 /* ===================================
    BOTONES
 =================================== */
-
 .btn {
-    border: 2px solid #313030;
+    border: none;
     background: transparent;
-    padding: 8px 20px;
-    border-radius: 6px;
+    padding: 0;
     cursor: pointer;
     color: #313030;
     font-size: 15px;
-    transition: 0.3s;
+    text-decoration: none;
 }
 
 .btn:hover {
-    background: #313030;
-    color: #fff;
+    color: #d2232a;
 }
 
 .btn-primary {
-    background: #D2232A;
+    background: #d2232a;
     color: #fff;
     border: none;
-    padding: 8px 20px;
-    border-radius: 12px;
+    padding: 12px 26px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 500;
     font-size: 15px;
+    text-decoration: none;
 }
 
 .btn-primary:hover {
@@ -90,41 +99,69 @@ body {
 =================================== */
 
 .hero {
-    padding: 60px 0;
-    position: relative;
+    padding: 80px 0 100px;
+    display: flex;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); /* texto más ancho que la imagen */
+    align-items: center;
+    column-gap: 80px;
 }
 
+/* Columna izquierda (contenedor para centrar el bloque) */
+.hero > *:not(.hero-img) {
+    grid-column: 1 / 2;
+}
+
+/* Tag rosado */
 .tag {
     display: inline-block;
-    padding: 6px 14px;
-    border-radius: 100px;
-    background: #f8e7e8;
+    padding: 10px 26px;
+    border-radius: 999px;
+    background: #ffe6e6;
     color: #d2232a;
     font-size: 12px;
+    margin-bottom: 28px;
 }
 
+/* Bloque de título + texto ajustado a un ancho fijo centrado visualmente */
 .hero-title {
-    font-size: 34px;
-    margin: 20px 0 10px;
+    font-size: 36px;
+    margin: 0 0 18px;
+    max-width: 520px;
 }
 
 .hero-text {
-    max-width: 520px;
-    line-height: 1.6;
+    max-width: 620px;
+    line-height: 1.7;
+    color: #666666;
+    font-size: 15px;
 }
 
+/* Botones del hero */
 .hero-buttons {
     display: flex;
-    gap: 15px;
-    margin-top: 25px;
+    gap: 18px;
+    margin-top: 30px;
 }
 
-/* Imagen flotada (A1 EXACTO) */
+.hero .btn-primary {
+    padding: 16px 34px;
+    border-radius: 12px;
+}
+
+.hero .btn {
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: 1px solid #dedede;
+    background: #ffffff;
+}
+
+/* Columna derecha (imagen) */
 .hero-img {
-    width: 360px;
-    border-radius: 40px;
-    float: right;
-    margin-top: -120px;
+    grid-column: 2 / 3;
+    justify-self: end;        /* pega la tarjeta al lado derecho */
+    width: 327px;
+    max-width: 100%;
+    border-radius: 32px;
 }
 
 /* ===================================
@@ -163,11 +200,11 @@ body {
    CTA
 =================================== */
 .cta {
-    background: #D2232A;
+    background: #d2232a;
     padding: 70px 0;
     text-align: center;
     color: #fff;
-    margin-top: 0px;
+    margin-top: 2rem;
 }
 
 .cta-title {
@@ -180,20 +217,48 @@ body {
 }
 
 /* ===================================
-   RESPONSIVE
+   RESPONSIVE HERO
 =================================== */
 @media (max-width: 900px) {
-    .hero-img {
-        float: none;
-        display: block;
-        margin: 20px auto;
-        width: 80%;
+    /* Hero en una sola columna */
+    .hero {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+        text-align: center;
+        padding: 48px 0 56px;
+        display: inline-grid;
     }
 
+    /* Todo el contenido de texto ocupa la primera “fila” */
+    .hero > *:not(.hero-img) {
+        grid-column: 1 / -1;
+        margin-left: 0;                 /* quitar desplazamiento lateral */
+    }
+
+    .hero-title,
     .hero-text {
         max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 12px;
+        margin-top: 24px;
+    }
+
+    /* Imagen debajo, centrada y algo más pequeña */
+    .hero-img {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: 88%;
+        max-width: 430px;
+    }
+
+    /* Opcional: cards una debajo de otra */
     .cards {
         flex-direction: column;
     }
@@ -201,23 +266,18 @@ body {
     .card {
         margin-bottom: 20px;
     }
-
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-    }
 }
+
 
 /* ============================
    FOOTER
 =============================== */
-
 .footer {
     background: #313030;
     padding: 50px 0;
     text-align: center;
     color: #e5e5e5;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .footer-logo {
@@ -234,9 +294,12 @@ body {
 
 /* =====================================
    ESTILOS EXCLUSIVOS DE REGISTRO
-   ===================================== */
+===================================== */
 
-/* Fondo estilo cover */
+/* OJO: si usas .cover + .container en la página de registro,
+   mejor crea otra clase en vez de reutilizar .container global.
+   De momento lo dejo igual que lo tenías. */
+
 .cover {
     position: relative;
     width: 100%;
@@ -246,7 +309,6 @@ body {
     background-position: center;
 }
 
-/* Oscurecimiento */
 .overlay {
     position: absolute;
     top: 0;
@@ -257,8 +319,7 @@ body {
     opacity: 0.7;
 }
 
-/* Contenedor general */
-.container {
+.cover .container {
     position: relative;
     z-index: 2;
     height: 100%;
@@ -268,7 +329,6 @@ body {
     padding: 20px;
 }
 
-/* Botón volver */
 .volver a {
     color: white;
     font-size: 18px;
@@ -276,7 +336,6 @@ body {
     font-weight: bold;
 }
 
-/* Caja blanca */
 .login-box {
     background: #f5f5f5;
     padding: 25px;
@@ -287,21 +346,18 @@ body {
     width: 100%;
 }
 
-/* Logo */
 .login-box .logo {
     width: 70px;
     height: auto;
     margin-bottom: 10px;
 }
 
-/* Título */
 .login-box h2 {
     color: #313030;
     margin: 10px 0 20px;
     font-size: 24px;
 }
 
-/* Formulario */
 .login-box form {
     width: 100%;
     display: flex;
@@ -323,7 +379,6 @@ body {
     font-size: 15px;
 }
 
-/* Check legal */
 .check {
     font-size: 14px;
     color: #313030;
@@ -334,7 +389,6 @@ body {
     margin-right: 6px;
 }
 
-/* Botón Registrarme */
 .btn-login {
     margin-top: 20px;
     background: #d2232a;
@@ -347,247 +401,378 @@ body {
     width: 100%;
 }
 
-/* ====================================================
-   ESTILOS AISLADOS PARA LA PÁGINA REGISTRO
-   ==================================================== */
 
-/* Fondo estilo cover */
-.reg-cover {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-image: url("https://makemiqr.wordpress.com/wp-content/uploads/2025/11/image-3-1.png?w=1024");
-    background-size: cover;
-    background-position: center;
+
+
+/* ============================
+   TIENDA / PRODUCTOS
+=============================== */
+
+.shop-header {
+  background: #ffffff;
+  border-bottom: 1px solid #eeeeee;
 }
 
-/* Oscurecimiento */
-.reg-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    opacity: 0.7;
+.shop-header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* Contenedor general (YA NO INTERFIERE CON .container DE INDEX) */
-.reg-container {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 20px;
+/* Volver */
+.shop-back {
+  font-size: 14px;
+  color: #555;
+  text-decoration: none;
 }
 
-/* Botón volver */
-.reg-volver a {
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-    font-weight: bold;
+.shop-back:hover {
+  color: #d2232a;
 }
 
-/* Caja blanca */
-.reg-login-box {
-    background: #f5f5f5;
-    padding: 25px;
-    border-radius: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+/* Logo + título */
+.shop-logo-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.shop-logo {
+  width: 60px;
+  height: auto;
+}
+
+.shop-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Botón carrito */
+.shop-cart-btn {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  background: #d2232a;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* Contenedor principal */
+.shop-main {
+  background: #fafafa;
+  padding: 40px 0 60px;
+}
+
+.shop-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+
+/* Tarjeta de producto */
+.product-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-image-wrapper {
+  width: 100%;
+  padding-top: 70%;           /* ratio aproximado 7:5 */
+  position: relative;
+  overflow: hidden;
+}
+
+.product-image-wrapper img.product-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Puntos indicadores */
+.product-dots {
+  display: flex;
+  gap: 6px;
+  padding: 16px 22px 8px;
+}
+
+.product-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #bdbdbd;
+}
+
+/* Nombre y descripción */
+.product-name {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 0 22px;
+  margin-bottom: 8px;
+}
+
+.product-desc {
+  font-size: 14px;
+  color: #777;
+  padding: 0 22px 22px;
+  line-height: 1.6;
+}
+
+/* Responsive tienda */
+@media (max-width: 1000px) {
+  .shop-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .shop-header-inner {
+    padding: 14px 16px;
+  }
+
+  .shop-container {
+    grid-template-columns: 1fr;
+    padding: 0 16px 32px;
+  }
+}
+´
+
+
+/* ============================
+   LOGIN / INICIAR SESIÓN
+=============================== */
+
+/* Body con la imagen de fondo */
+.login-body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #111;
+  position: relative;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* Oscurecer el fondo */
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background-image: url("./assets/login_background.png");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Envoltorio centrado */
+.login-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: rgb(0, 0, 0, 0.7);
+}
+
+/* Botón Volver arriba a la izquierda */
+.login-back {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  z-index: 2;
+}
+
+/* Tarjeta blanca */
+.login-card {
+  width: 100%;
+  max-width: 540px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px 40px 36px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Logo */
-.reg-logo {
-    width: 70px;
-    height: auto;
-    margin-bottom: 10px;
+.login-logo {
+  width: 70px;
+  margin-bottom: 12px;
 }
 
 /* Título */
-.reg-title {
-    color: #313030;
-    margin: 10px 0 20px;
-    font-size: 24px;
+.login-title {
+  font-size: 24px;
+  margin-bottom: 24px;
 }
 
 /* Formulario */
-.reg-label {
-    color: #ababab;
-    margin: 10px 0 5px;
-    width: 100%;
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.reg-input {
-    padding: 12px;
-    border: 1px solid #ababab;
-    border-radius: 10px;
-    outline: none;
-    font-size: 15px;
-    width: 100%;
+.login-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: #555;
 }
 
-/* Check legal */
-.reg-check {
+.login-optional {
+  color: #b5b5b5;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.login-input {
+  margin-top: 8px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid #d3d3d3;
+  font-size: 14px;
+  outline: none;
+}
+
+.login-input:focus {
+  border-color: #d2232a;
+  box-shadow: 0 0 0 1px rgba(210, 35, 42, 0.15);
+}
+
+/* Mensaje de error */
+.login-error {
+  min-height: 18px;
+  font-size: 13px;
+  color: #d2232a;
+  margin-top: 4px;
+}
+
+/* Botones */
+.login-btn-primary,
+.login-btn-secondary {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  font-weight: 500;
+}
+
+/* Botón rojo Iniciar sesión */
+.login-btn-primary {
+  background: #d2232a;
+  color: #ffffff;
+}
+
+.login-btn-primary:hover {
+  background: #b51d26;
+}
+
+/* Botón negro Registrarse */
+.login-btn-secondary {
+  background: #1f1f1f;
+  color: #ffffff;
+}
+
+.login-btn-secondary:hover {
+  background: #151515;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .login-card {
+    padding: 24px 20px 28px;
+    border-radius: 18px;
+  }
+
+  .login-title {
+    font-size: 22px;
+  }
+
+  .login-back {
+    top: 16px;
+    left: 16px;
     font-size: 14px;
-    color: #313030;
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+  }
 }
 
-/* Botón Registrarme */
-.reg-btn-login {
-    margin-top: 20px;
-    background: #d2232a;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    padding: 15px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
+
+/* Tarjeta de registro (misma base que login-card) */
+.register-card {
+  width: 100%;
+  max-width: 720px;        /* un poco más ancho que login */
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 32px 40px 36px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ====================================================
-   ESTILOS AISLADOS PARA LA PÁGINA REGISTRO
-   ==================================================== */
-
-/* Fondo estilo cover */
-.reg-cover {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-image: url("https://makemiqr.wordpress.com/wp-content/uploads/2025/11/image-3-1.png?w=1024");
-    background-size: cover;
-    background-position: center;
+/* Fila teléfono: prefijo + input */
+.phone-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
 }
 
-/* Oscurecimiento */
-.reg-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: black;
-    opacity: 0.8;
+.phone-prefix {
+  background: #f5f5f5;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 14px;
 }
 
-/* Contenedor general */
-.reg-container {
-    position: relative;
-    z-index: 2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center; /* ← CENTRA EL FORMULARIO */
-    padding: 0px;
+.phone-input {
+  flex: 1;
 }
 
-/* Botón volver */
-.reg-volver {
-    width: 100%;
-    max-width: 1200px;
-}
-.reg-volver a {
-    color: white;
-    font-size: 18px;
-    text-decoration: none;
-    font-weight: bold;
+/* Checkbox de términos */
+.terms-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #555;
+  margin-top: 8px;
 }
 
-/* Caja del formulario */
-.reg-login-box {
-    background: #f5f5f5;
-    padding: 60px;
-    border-radius: 30px;
-
-    width: 100%;
-    max-width: 720px; /* ← ANCHO IDEAL PARA COMPUTADOR */
+.terms-label input[type="checkbox"] {
+  margin-top: 3px;
 }
 
-/* Logo */
-.reg-logo {
-    width: 70px;
-    margin-bottom: 10px;
-}
+/* Responsive registro */
+@media (max-width: 640px) {
+  .register-card {
+    max-width: 100%;
+    padding: 24px 20px 28px;
+    border-radius: 18px;
+  }
 
-/* Título */
-.reg-title {
-    color: #313030;
-    margin: 10px 0 20px;
-    font-size: 24px;
-}
-
-/* Formulario */
-.reg-label {
-    color: #ababab;
-    margin: 10px 0 5px;
-    width: 100%;
-}
-
-.reg-input {
-    padding: 12px;
-    border: 1px solid #ababab;
-    border-radius: 10px;
-    outline: none;
-    font-size: 15px;
-    width: 100%;
-}
-
-/* Check legal */
-.reg-check {
-    font-size: 14px;
-    color: #313030;
-    margin-top: 15px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-/* Botón Registrarme */
-.reg-btn-login {
-    margin-top: 20px;
-    background: #d2232a;
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    padding: 15px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
-}
-
-/* ============================================
-   📱 RESPONSIVE — Para que se vea perfecto
-   ============================================ */
-
-@media (max-width: 768px) {
-
-    .reg-login-box {
-        max-width: 90%; /* Más ancho en celulares */
-        padding: 25px;
-    }
-
-    .reg-title {
-        font-size: 20px;
-    }
-
-    .reg-logo {
-        width: 60px;
-    }
-}
-
-.wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+  .phone-row {
+    flex-direction: row;
+  }
 }
