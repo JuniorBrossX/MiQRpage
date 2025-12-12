@@ -776,3 +776,106 @@ body {
     flex-direction: row;
   }
 }
+
+/* ============================
+   CONTROLES DE PRODUCTOS
+=============================== */
+
+.product-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 12px;
+}
+
+.product-controls span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #313030;
+}
+
+/* Botones + y - reutilizan tu estilo .btn */
+.product-controls .btn {
+    padding: 8px 18px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid #cfcfcf;
+    transition: 0.25s;
+}
+
+.product-controls .btn:hover {
+    background: #313030;
+    color: #ffffff;
+}
+
+/* ============================
+   BARRA INFERIOR DEL CARRITO
+=============================== */
+
+.cart-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #e5e5e5;
+    padding: 16px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+}
+
+.cart-info {
+    font-size: 18px;
+    font-weight: 500;
+    color: #313030;
+}
+
+.cart-actions {
+    display: flex;
+    gap: 14px;
+}
+
+/* Botón limpiar (usa .btn base) */
+.cart-actions .btn {
+    border: 1px solid #313030;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: transparent;
+    transition: 0.2s;
+}
+
+.cart-actions .btn:hover {
+    background: #313030;
+    color: #ffffff;
+}
+
+/* Botón Ir a compras (usa .btn-primary) */
+.cart-actions .btn-primary {
+    padding: 10px 24px;
+    border-radius: 10px;
+}
+
+/* ============================
+   RESPONSIVE
+=============================== */
+
+@media (max-width: 600px) {
+    .cart-bar {
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .cart-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .product-controls .btn {
+        padding: 8px 16px;
+    }
+}

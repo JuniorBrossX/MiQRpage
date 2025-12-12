@@ -44,6 +44,12 @@
         <p class="product-desc">
           Tarjeta con tu QR personalizado impreso en alta calidad.
         </p>
+<div class="product-controls">
+    <button class="btn" onclick="addItem('qr')">+</button>
+    <span id="count-qr">0</span>
+    <button class="btn" onclick="removeItem('qr')">-</button>
+</div>
+
       </article>
 
       <!-- Producto 2 -->
@@ -61,6 +67,12 @@
         <p class="product-desc">
           Protector diseñado para cuidar tu tarjeta y prolongar su durabilidad.
         </p>
+<div class="product-controls">
+    <button class="btn" onclick="addItem('protect')">+</button>
+    <span id="count-protect">0</span>
+    <button class="btn" onclick="removeItem('protect')">-</button>
+</div>
+
       </article>
 
       <!-- Producto 3 -->
@@ -78,10 +90,80 @@
         <p class="product-desc">
           Accesorios diseñados para complementar y mejorar tus tarjetas QR.
         </p>
+<div class="product-controls">
+    <button class="btn" onclick="addItem('acces')">+</button>
+    <span id="count-acces">0</span>
+    <button class="btn" onclick="removeItem('acces')">-</button>
+</div>
+
       </article>
 
     </div>
   </main>
+<!-- CARRITO FIJO -->
+<div class="cart-bar">
+    <div class="cart-info">
+        <span>Total:</span>
+        <strong id="cartTotal">$0 COP</strong>
+    </div>
+
+    <div class="cart-actions">
+        <button class="btn" onclick="clearCart()">Limpiar carrito</button>
+        <button class="btn-primary" onclick="goToCheckout()">Ir a las compras</button>
+    </div>
+</div>
+
+<script>
+    const prices = {
+        qr: 10000,
+        protect: 5000,
+        acces: 2000
+    };
+
+    const counts = {
+        qr: 0,
+        protect: 0,
+        acces: 0
+    };
+
+    function updateCart() {
+        let total =
+            counts.qr * prices.qr +
+            counts.protect * prices.protect +
+            counts.acces * prices.acces;
+
+        document.getElementById("cartTotal").textContent =
+            `$${total.toLocaleString("es-CO")} COP`;
+
+        document.getElementById("count-qr").textContent = counts.qr;
+        document.getElementById("count-protect").textContent = counts.protect;
+        document.getElementById("count-acces").textContent = counts.acces;
+    }
+
+    function addItem(type) {
+        counts[type]++;
+        updateCart();
+    }
+
+    function removeItem(type) {
+        if (counts[type] > 0) {
+            counts[type]--;
+            updateCart();
+        }
+    }
+
+    function clearCart() {
+        counts.qr = 0;
+        counts.protect = 0;
+        counts.acces = 0;
+        updateCart();
+    }
+
+    function goToCheckout() {
+        alert("Primero registrate para realizar tu compra");
+    }
+</script>
+
 
 </body>
 </html>
