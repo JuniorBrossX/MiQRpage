@@ -12,18 +12,31 @@
   <header class="shop-header">
     <div class="shop-header-inner">
 
-      <a href="index.html" class="shop-back">← Volver</a>
+    <!-- Logo clickeable que vuelve a index.html -->
+    <a href="index.html" class="shop-back-logo">
+      <img src="https://makemiqr.wordpress.com/wp-content/uploads/2025/11/logo-mi-qr-03-1.png?w=924"
+           alt="MiQR" class="shop-logo">
+      <span class="shop-title">Tienda</span>
+    </a>
 
-      <div class="shop-logo-title">
-        <img src="https://makemiqr.wordpress.com/wp-content/uploads/2025/11/logo-mi-qr-03-1.png?w=924"
-             alt="Logo MiQR" class="shop-logo">
-        <span class="shop-title">Tienda</span>
-      </div>
+    <!-- Botón modo oscuro y carrito, por ejemplo -->
+    <div class="shop-right">
+      <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
+  <img src="./assets/sun.svg" alt="Modo claro" class="theme-icon theme-icon-sun">
+  <img src="./assets/moon.svg" alt="Modo oscuro" class="theme-icon theme-icon-moon">
+</button>
 
-    <!--<a href="#" class="shop-cart-btn">Carrito</a>-->
-
+  <!-- Botón carrito con icono y badge -->
+  <button class="cart-icon-btn" aria-label="Ver carrito">
+    <img src="./assets/Carrito.svg" alt="Carrito" class="cart-icon-img">
+    <span id="cartBadge" class="cart-badge">0</span>
+      </button>
     </div>
-  </header>
+
+  </div>
+
+
+
 
   <!-- LISTA DE PRODUCTOS -->
   <main class="shop-main">
@@ -126,19 +139,25 @@
         acces: 0
     };
 
-    function updateCart() {
-        let total =
-            counts.qr * prices.qr +
-            counts.protect * prices.protect +
-            counts.acces * prices.acces;
+function updateCart() {
+    let total =
+        counts.qr * prices.qr +
+        counts.protect * prices.protect +
+        counts.acces * prices.acces;
 
-        document.getElementById("cartTotal").textContent =
-            `$${total.toLocaleString("es-CO")} COP`;
+    document.getElementById("cartTotal").textContent =
+        `$${total.toLocaleString("es-CO")} COP`;
 
-        document.getElementById("count-qr").textContent = counts.qr;
-        document.getElementById("count-protect").textContent = counts.protect;
-        document.getElementById("count-acces").textContent = counts.acces;
-    }
+    document.getElementById("count-qr").textContent = counts.qr;
+    document.getElementById("count-protect").textContent = counts.protect;
+    document.getElementById("count-acces").textContent = counts.acces;
+
+    // NUEVO: actualizar número del badge del carrito
+    const totalItems = counts.qr + counts.protect + counts.acces;
+    const badge = document.getElementById("cartBadge");
+    badge.textContent = totalItems;
+}
+
 
     function addItem(type) {
         counts[type]++;
@@ -162,6 +181,22 @@
     function goToCheckout() {
         alert("Primero registrate para realizar tu compra");
     }
+</script>
+
+<script>
+  const toggleBtn = document.getElementById('themeToggle');
+
+  // Cargar preferencia previa
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
 </script>
 
 

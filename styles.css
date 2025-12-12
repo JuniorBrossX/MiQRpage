@@ -1,11 +1,35 @@
+:root {
+  --bg-color: #fafafa;
+  --text-color: #313030;
+  --card-bg: #ffffff;
+  --header-bg: #d5d5d5;
+  --border-color: #e5e5e5;
+  --shop-header-bg: #f4f4f4;     
+  --border-shopmain-color: #313030;
+  --product-desc-color: #777777;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --text-color: #e3e3e3;
+  --card-bg: #1e1e1e;
+  --header-bg: #1b1b1b;
+  --border-color: #333333;
+  --shop-header-bg: #313030;
+  --border-shopmain-color: #fafafa;      
+  --product-desc-color: #bdbdbd;
+}
+
+
+
 /* ===================================
    GENERALES
 =================================== */
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: #fafafa;
-    color: #313030;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 
 .container {
@@ -72,6 +96,7 @@ body {
     color: #313030;
     font-size: 15px;
     text-decoration: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 .btn:hover {
@@ -88,10 +113,29 @@ body {
     font-weight: 500;
     font-size: 15px;
     text-decoration: none;
+    font-family: 'Poppins', sans-serif;
 }
 
 .btn-primary:hover {
     background: #b51d26;
+}
+
+/* === Variantes en modo oscuro === */
+body.dark-mode .btn {
+    color: #d5d5d5;
+}
+
+body.dark-mode .btn:hover {
+    color: #d2232a; /* un rojo un poco más brillante sobre fondo oscuro */
+}
+
+body.dark-mode .btn-primary {
+    background: #d2232a;
+    color: #d5d5d5;
+}
+
+body.dark-mode .btn-primary:hover {
+    background: #ff6b6b;
 }
 
 /* ===================================
@@ -101,7 +145,7 @@ body {
 .hero {
     padding: 80px 0 100px;
     display: flex;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); /* texto más ancho que la imagen */
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); /* texto mÃ¡s ancho que la imagen */
     align-items: center;
     column-gap: 80px;
 }
@@ -122,7 +166,7 @@ body {
     margin-bottom: 28px;
 }
 
-/* Bloque de título + texto ajustado a un ancho fijo centrado visualmente */
+/* Bloque de tÃ­tulo + texto ajustado a un ancho fijo centrado visualmente */
 .hero-title {
     font-size: 36px;
     margin: 0 0 18px;
@@ -229,7 +273,7 @@ body {
         display: inline-grid;
     }
 
-    /* Todo el contenido de texto ocupa la primera “fila” */
+    /* Todo el contenido de texto ocupa la primera â€œfilaâ€ */
     .hero > *:not(.hero-img) {
         grid-column: 1 / -1;
         margin-left: 0;                 /* quitar desplazamiento lateral */
@@ -250,7 +294,7 @@ body {
         margin-top: 24px;
     }
 
-    /* Imagen debajo, centrada y algo más pequeña */
+    /* Imagen debajo, centrada y algo mÃ¡s pequeÃ±a */
     .hero-img {
         grid-column: 1 / -1;
         justify-self: center;
@@ -296,9 +340,9 @@ body {
    ESTILOS EXCLUSIVOS DE REGISTRO
 ===================================== */
 
-/* OJO: si usas .cover + .container en la página de registro,
+/* OJO: si usas .cover + .container en la pÃ¡gina de registro,
    mejor crea otra clase en vez de reutilizar .container global.
-   De momento lo dejo igual que lo tenías. */
+   De momento lo dejo igual que lo tenÃ­as. */
 
 .cover {
     position: relative;
@@ -409,8 +453,8 @@ body {
 =============================== */
 
 .shop-header {
-  background: #ffffff;
-  border-bottom: 1px solid #eeeeee;
+  background: var(--shop-header-bg);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .shop-header-inner {
@@ -420,7 +464,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: var(--shop-header-bg); /* asegura mismo color dentro */
 }
+
 
 /* Volver */
 .shop-back {
@@ -433,7 +479,7 @@ body {
   color: #d2232a;
 }
 
-/* Logo + título */
+/* Logo + tÃ­tulo */
 .shop-logo-title {
   display: flex;
   align-items: center;
@@ -450,7 +496,7 @@ body {
   font-weight: 600;
 }
 
-/* Botón carrito */
+/* BotÃ³n carrito */
 .shop-cart-btn {
   padding: 10px 22px;
   border-radius: 999px;
@@ -470,7 +516,7 @@ body {
 .shop-container {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 24px 40px;
+  padding: 0px 24px 40px;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 32px;
@@ -515,7 +561,7 @@ body {
   background: #bdbdbd;
 }
 
-/* Nombre y descripción */
+/* Nombre y descripciÃ³n */
 .product-name {
   font-size: 18px;
   font-weight: 600;
@@ -547,11 +593,11 @@ body {
     padding: 0 16px 32px;
   }
 }
-´
+Â´
 
 
 /* ============================
-   LOGIN / INICIAR SESIÓN
+   LOGIN / INICIAR SESIÃ“N
 =============================== */
 
 /* Body con la imagen de fondo */
@@ -587,7 +633,7 @@ body {
   background-color: rgb(0, 0, 0, 0.7);
 }
 
-/* Botón Volver arriba a la izquierda */
+/* BotÃ³n Volver arriba a la izquierda */
 .login-back {
   position: fixed;
   top: 24px;
@@ -617,7 +663,7 @@ body {
   margin-bottom: 12px;
 }
 
-/* Título */
+/* TÃ­tulo */
 .login-title {
   font-size: 24px;
   margin-bottom: 24px;
@@ -679,7 +725,7 @@ body {
   font-weight: 500;
 }
 
-/* Botón rojo Iniciar sesión */
+/* BotÃ³n rojo Iniciar sesiÃ³n */
 .login-btn-primary {
   background: #d2232a;
   color: #ffffff;
@@ -689,7 +735,7 @@ body {
   background: #b51d26;
 }
 
-/* Botón negro Registrarse */
+/* BotÃ³n negro Registrarse */
 .login-btn-secondary {
   background: #1f1f1f;
   color: #ffffff;
@@ -721,7 +767,7 @@ body {
 /* Tarjeta de registro (misma base que login-card) */
 .register-card {
   width: 100%;
-  max-width: 720px;        /* un poco más ancho que login */
+  max-width: 720px;        /* un poco mÃ¡s ancho que login */
   background: #ffffff;
   border-radius: 24px;
   padding: 32px 40px 36px;
@@ -731,7 +777,7 @@ body {
   align-items: center;
 }
 
-/* Fila teléfono: prefijo + input */
+/* Fila telÃ©fono: prefijo + input */
 .phone-row {
   display: flex;
   align-items: center;
@@ -750,7 +796,7 @@ body {
   flex: 1;
 }
 
-/* Checkbox de términos */
+/* Checkbox de tÃ©rminos */
 .terms-label {
   display: flex;
   align-items: flex-start;
@@ -792,7 +838,7 @@ body {
 .product-controls span {
     font-size: 18px;
     font-weight: bold;
-    color: #313030;
+    color: var(--text-color);
 }
 
 /* Botones + y - reutilizan tu estilo .btn */
@@ -838,7 +884,7 @@ body {
     gap: 14px;
 }
 
-/* Botón limpiar (usa .btn base) */
+/* BotÃ³n limpiar (usa .btn base) */
 .cart-actions .btn {
     border: 1px solid #313030;
     padding: 10px 20px;
@@ -852,7 +898,7 @@ body {
     color: #ffffff;
 }
 
-/* Botón Ir a compras (usa .btn-primary) */
+/* BotÃ³n Ir a compras (usa .btn-primary) */
 .cart-actions .btn-primary {
     padding: 10px 24px;
     border-radius: 10px;
@@ -883,9 +929,375 @@ body {
 .cart-actions {
     display: flex;
     gap: 14px;
-    transform: translateX(-405px); /* ← mueve los botones un poco hacia adentro */
+    transform: translateX(-405px); /* â† mueve los botones un poco hacia adentro */
 }
 
 .cart-info {
     transform: translateX(340px); /* mueve el total hacia la derecha */
+}
+
+.dark-mode
+/* ============================
+   MODO OSCURO â€“ VARIABLES
+=============================== */
+
+:root {
+    --bg-color: #fafafa;
+    --text-color: #313030;
+    --card-bg: #ffffff;
+    --shop-header-bg: #313030;
+    --product-desc-color: #777;
+    --border-color: #e5e5e5;
+}
+
+body.dark-mode {
+    --bg-color: #121212;
+    --text-color: #e3e3e3;
+    --card-bg: #1e1e1e;
+    --shop-header-bg: #1a1a1a;
+    --product-desc-color: #bdbdbd;
+    --border-color: #333;
+}
+
+/* ============================
+   APLICAR VARIABLES A LA TIENDA
+=============================== */
+
+/* Fondo principal */
+.shop-main {
+    background: var(--bg-color);
+    padding: 40px 0 60px
+}
+
+/* Header tienda */
+.shop-header {
+    background: var(--shop-header-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Tarjetas */
+.product-card {
+    background: var(--card-bg);
+}
+
+/* Texto general */
+.product-name,
+.shop-title,
+.shop-back {
+    color: var(--text-color);
+}
+
+/* DescripciÃ³n */
+.product-desc {
+    color: var(--product-desc-color);
+}
+
+/* Dots */
+.product-dots span {
+    background: var(--border-shopmain-color);
+}
+
+/* Carrito */
+.cart-bar {
+    background: var(--shop-header-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+.cart-info {
+    color: var(--text-color);
+}
+
+.cart-actions .btn {
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+}
+
+.cart-actions .btn:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* Botones + y - del carrito */
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: #333;
+}
+
+/* Hover en modo claro */
+.qty-btn:hover {
+  background: #e5e5e5;
+}
+
+/* Versión clara para modo oscuro (más visibles) */
+body.dark-mode .qty-btn {
+  background: #f0f0f0;
+  border-color: #f0f0f0;
+  color: #111;
+}
+
+body.dark-mode .qty-btn:hover {
+  background: #ffffff;
+}
+
+/* === Botones + y - del carrito === */
+/* Aplica a los botones dentro de .product-actions */
+.product-actions button {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  color: #333;
+}
+
+/* Hover en modo claro */
+.product-actions button:hover {
+  background: #e5e5e5;
+}
+
+/* Versión clara para modo oscuro (más visibles sobre fondo oscuro) */
+body.dark-mode .product-actions button {
+  background: #f0f0f0;
+  border-color: #f0f0f0;
+  color: #111;
+}
+
+body.dark-mode .product-actions button:hover {
+  background: #ffffff;
+}
+
+/* Transiciones suaves al cambiar modo claro/oscuro */
+body,
+.shop-main,
+.shop-header,
+.product-card,
+.cart-bar,
+.cart-info,
+.product-desc,
+.product-name,
+.shop-title,
+.shop-back,
+.theme-toggle,
+.btn,
+.btn-primary {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.shop-header-inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo + título con estilo de "volver" */
+.shop-back-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  font-size: 14px;              /* mismo tamaño que usabas en .shop-back */
+  color: #555;
+}
+
+.shop-back-logo:hover {
+  color: #d2232a;
+}
+
+/* El logo dentro del link */
+.shop-logo {
+  width: 60px;
+  height: auto;
+}
+
+/* Texto "Tienda" al lado del logo */
+.shop-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Lado derecho: botón modo oscuro + carrito */
+.shop-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Botón carrito (si no lo tienes ya) */
+.shop-cart-btn {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  background: #d2232a;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* Que también responda al modo oscuro */
+body.dark-mode .shop-back-logo {
+  color: var(--text-color);
+}
+
+body.dark-mode .shop-back-logo:hover {
+  color: #ff4a4a;
+}
+
+/* Botón de carrito como icono */
+.cart-icon-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border-shopmain-color);
+  background: var(--card-bg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cart-icon-img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+/* Badge de cantidad */
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #d2232a;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* En modo oscuro mantenemos el rojo vivo */
+body.dark-mode .cart-icon-btn {
+  background: var(--card-bg);
+  border-color: var(--border-shopmain-color);
+}
+
+/* icono negro en modo claro */
+.cart-icon-img {
+  width: 22px;
+  height: 22px;
+  filter: invert(0);
+}
+
+/* icono claro en modo oscuro */
+body.dark-mode .cart-icon-img {
+  filter: invert(1); /* invierte el color → negro → blanco */
+}
+
+.shop-header {
+  background: var(--shop-header-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.shop-main {
+  border-bottom: none;        /* quita la línea */
+  background: var(--bg-color); /* opcional, para fusionar con el fondo */
+}
+
+.product-card {
+  padding-bottom: 16px; /* o el valor que se vea bien */
+}
+
+.shop-header {
+  background: var(--shop-header-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Botón switch */
+.theme-toggle {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--header-bg);                    /* color base modo claro */
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Iconos encima del botón */
+.theme-icon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);        /* los hace blancos */
+}
+
+/* Sol a la izquierda, visible en modo claro */
+.theme-icon-sun {
+  right: 8px;
+  opacity: 1;
+}
+
+/* Luna a la derecha, oculta en modo claro */
+.theme-icon-moon {
+  left: 8px;
+  opacity: 0;
+}
+
+/* Bolita deslizante */
+.theme-toggle::before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--border-shopmain-color);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+/* MODO OSCURO: cambia color de fondo, iconos y posición de la bolita */
+body.dark-mode .theme-toggle {
+  background: #333a56;
+}
+
+/* Mostrar luna y ocultar sol */
+body.dark-mode .theme-icon-sun {
+  opacity: 0;
+}
+
+body.dark-mode .theme-icon-moon {
+  opacity: 1;
+}
+
+/* Desplazar la bolita hacia la derecha en modo oscuro */
+body.dark-mode .theme-toggle::before {
+  transform: translateX(24px);
+  background-color: #f0f0f0;
 }
