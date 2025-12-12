@@ -879,3 +879,13 @@ body {
         padding: 8px 16px;
     }
 }
+
+.cart-actions {
+    display: flex;
+    gap: 14px;
+    transform: translateX(-405px); /* ← mueve los botones un poco hacia adentro */
+}
+
+.cart-info {
+    transform: translateX(340px); /* mueve el total hacia la derecha */
+}
