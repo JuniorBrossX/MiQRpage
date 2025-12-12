@@ -7,6 +7,8 @@
   --shop-header-bg: #f4f4f4;     
   --border-shopmain-color: #313030;
   --product-desc-color: #777777;
+  --hero-color: #d2232a;
+  --tag-color: #ffe6e6;
 }
 
 body.dark-mode {
@@ -18,6 +20,8 @@ body.dark-mode {
   --shop-header-bg: #313030;
   --border-shopmain-color: #fafafa;      
   --product-desc-color: #bdbdbd;
+  --hero-color: #d5d5d5;
+  --tag-color: #333333;
 }
 
 
@@ -42,8 +46,8 @@ body {
    HEADER
 =================================== */
 .header {
-    background: #ffffff;
-    border-bottom: 1px solid #e5e5e5;
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -67,10 +71,11 @@ body {
     max-width: 420px;
     margin: 0 32px;
     padding: 16px 18px;
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--border-color);
     border-radius: 4px;
     font-size: 14px;
     outline: none;
+    background: var(--bg-color);
 }
 
 .search::placeholder {
@@ -100,7 +105,8 @@ body {
 }
 
 .btn:hover {
-    color: #d2232a;
+    color: var(--bg-color);
+    background: var(--text-color);
 }
 
 .btn-primary {
@@ -160,7 +166,7 @@ body.dark-mode .btn-primary:hover {
     display: inline-block;
     padding: 10px 26px;
     border-radius: 999px;
-    background: #ffe6e6;
+    background: var(--tag-color);
     color: #d2232a;
     font-size: 12px;
     margin-bottom: 28px;
@@ -176,7 +182,7 @@ body.dark-mode .btn-primary:hover {
 .hero-text {
     max-width: 620px;
     line-height: 1.7;
-    color: #666666;
+    color: var(--product-desc-color);
     font-size: 15px;
 }
 
@@ -196,7 +202,6 @@ body.dark-mode .btn-primary:hover {
     padding: 14px 32px;
     border-radius: 12px;
     border: 1px solid #dedede;
-    background: #ffffff;
 }
 
 /* Columna derecha (imagen) */
@@ -228,8 +233,8 @@ body.dark-mode .btn-primary:hover {
 
 .card {
     flex: 1;
-    background: #fef3f3;
-    border: 1px solid #fee2e2;
+    background: var(--tag-color);
+    border: 1px solid var(--card-bg);
     border-radius: 40px;
     text-align: center;
     padding: 40px 30px;
@@ -648,7 +653,7 @@ body.dark-mode .btn-primary:hover {
 .login-card {
   width: 100%;
   max-width: 540px;
-  background: #ffffff;
+  background: var(--bg-color);
   border-radius: 24px;
   padding: 32px 40px 36px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
@@ -667,6 +672,7 @@ body.dark-mode .btn-primary:hover {
 .login-title {
   font-size: 24px;
   margin-bottom: 24px;
+  color: var(--text-color);
 }
 
 /* Formulario */
@@ -1300,4 +1306,24 @@ body.dark-mode .theme-icon-moon {
 body.dark-mode .theme-toggle::before {
   transform: translateX(24px);
   background-color: #f0f0f0;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  display: block;
+}
+
+/* Por defecto: se ve el logo claro */
+.logo-dark {
+  display: none;
+}
+
+/* En modo oscuro: ocultar claro y mostrar oscuro */
+body.dark-mode .logo-light {
+  display: none;
+}
+
+body.dark-mode .logo-dark {
+  display: block;
 }
