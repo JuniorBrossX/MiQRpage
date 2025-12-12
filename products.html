@@ -31,57 +31,113 @@
 
       <!-- Producto 1 -->
       <article class="product-card">
-        <div class="product-image-wrapper">
-          <img src="./assets/cart.jpg"
-               alt="Tarjeta QR personalizada" class="product-image">
-        </div>
+  <div class="product-image-wrapper">
+    <img src="./assets/cart.jpg" alt="Tarjeta QR personalizada" class="product-image">
+  </div>
 
-        <div class="product-dots">
-          <span></span><span></span><span></span>
-        </div>
+  <h2 class="product-name">Tarjeta QR personalizada</h2>
+  <p class="product-desc">Tarjeta con tu QR personalizado impreso en alta calidad.</p>
 
-        <h2 class="product-name">Tarjeta QR personalizada</h2>
-        <p class="product-desc">
-          Tarjeta con tu QR personalizado impreso en alta calidad.
-        </p>
-      </article>
+  <div class="product-controls">
+      <button class="btn" onclick="addItem('qr')">+</button>
+      <span id="count-qr">0</span>
+      <button class="btn" onclick="removeItem('qr')">-</button>
+  </div>
+</article>
 
       <!-- Producto 2 -->
-      <article class="product-card">
-        <div class="product-image-wrapper">
-          <img src="./assets/protects.jpg"
-               alt="Protectores" class="product-image">
-        </div>
+  <article class="product-card">
+  <div class="product-image-wrapper">
+    <img src="./assets/protects.jpg" alt="Protectores" class="product-image">
+  </div>
 
-        <div class="product-dots">
-          <span></span><span></span><span></span>
-        </div>
+  <h2 class="product-name">Protectores</h2>
+  <p class="product-desc">Protector diseñado para cuidar tu tarjeta y prolongar su durabilidad.</p>
 
-        <h2 class="product-name">Protectores</h2>
-        <p class="product-desc">
-          Protector diseñado para cuidar tu tarjeta y prolongar su durabilidad.
-        </p>
-      </article>
+  <div class="product-controls">
+      <button class="btn" onclick="addItem('protect')">+</button>
+      <span id="count-protect">0</span>
+      <button class="btn" onclick="removeItem('protect')">-</button>
+  </div>
+</article>
 
       <!-- Producto 3 -->
-      <article class="product-card">
-        <div class="product-image-wrapper">
-          <img src="./assets/accesories.jpg"
-               alt="Accesorios" class="product-image">
-        </div>
+   <article class="product-card">
+  <div class="product-image-wrapper">
+    <img src="./assets/protects.jpg" alt="Protectores" class="product-image">
+  </div>
 
-        <div class="product-dots">
-          <span></span><span></span><span></span>
-        </div>
+  <h2 class="product-name">Protectores</h2>
+  <p class="product-desc">Protector diseñado para cuidar tu tarjeta y prolongar su durabilidad.</p>
 
-        <h2 class="product-name">Accesorios</h2>
-        <p class="product-desc">
-          Accesorios diseñados para complementar y mejorar tus tarjetas QR.
-        </p>
-      </article>
-
+  <div class="product-controls">
+      <button class="btn" onclick="addItem('protect')">+</button>
+      <span id="count-protect">0</span>
+      <button class="btn" onclick="removeItem('protect')">-</button>
+  </div>
+</article>
+<div class="cart-bar">
+    <div class="cart-info">
+        <span>Total: </span>
+        <strong id="cartTotal">$0 COP</strong>
     </div>
+
+    <div class="cart-actions">
+        <button class="btn" onclick="clearCart()">Limpiar carrito</button>
+        <button class="btn-primary" onclick="goToCheckout()">Ir a las compras</button>
+    </div>
+</div>
   </main>
+<script>
+  const prices = {
+      qr: 10000,
+      protect: 5000,
+      acces: 2000
+  };
+
+  const counts = {
+      qr: 0,
+      protect: 0,
+      acces: 0
+  };
+
+  function updateCart() {
+      let total = 
+        counts.qr * prices.qr +
+        counts.protect * prices.protect +
+        counts.acces * prices.acces;
+
+      document.getElementById("cartTotal").textContent =
+          `$${total.toLocaleString("es-CO")} COP`;
+
+      document.getElementById("count-qr").textContent = counts.qr;
+      document.getElementById("count-protect").textContent = counts.protect;
+      document.getElementById("count-acces").textContent = counts.acces;
+  }
+
+  function addItem(type) {
+      counts[type]++;
+      updateCart();
+  }
+
+  function removeItem(type) {
+      if (counts[type] > 0) {
+          counts[type]--;
+          updateCart();
+      }
+  }
+
+  function clearCart() {
+      counts.qr = 0;
+      counts.protect = 0;
+      counts.acces = 0;
+      updateCart();
+  }
+
+  function goToCheckout() {
+      alert("Aquí iría la página de pago. (Puedes redirigir luego)");
+  }
+</script>
 
 </body>
 </html>
